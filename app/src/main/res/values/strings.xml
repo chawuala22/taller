@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Taller2</string>
+    <string name="guardar">Guardar</string>
+    <string name="barrio">Barrio</string>
+    <string name="direccion">Direccion</string>
+    <string name="valor">Valor</string>
+    <string name="fecha">9:45 pm</string>
+
+    <string-array name="tipo">
+        <item>Agua</item>
+        <item>Gas</item>
+        <item>Luz</item>
+    </string-array>
 </resources>
