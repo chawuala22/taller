@@ -52,32 +52,35 @@
 
     <Spinner
         android:id="@+id/TContador"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/valor" />
 
-    <TextView
-        android:id="@+id/hora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="25sp"
-        android:text="@string/fecha"
-        android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TContador" />
 
-    <Button
+    <androidx.cardview.widget.CardView
         android:id="@+id/btnsaveinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#FF6200EE"
+        app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hora" />
+        app:layout_constraintTop_toBottomOf="@+id/TContador">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/guardar"
+            android:textAlignment="center"
+            android:textColor="#FFF" />
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.unimagdalena.optativa.taller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     EditText edBarrio, edDireccion, edValor;
     Spinner sptipo;
-    TextView tvfevha;
-    Button btnsave;
+    CardView btnsave;
     String tipo = "";
     long tipoId=0;
 
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         edDireccion = findViewById(R.id.direccion);
         edValor = findViewById(R.id.valor);
         sptipo = findViewById(R.id.TContador);
-        tvfevha = findViewById(R.id.hora);
         btnsave = findViewById(R.id.btnsaveinfo);
 
     }
@@ -50,12 +49,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String direccion = edDireccion.getText().toString();
         Integer valor = Integer.parseInt(edValor.getText().toString());
         DBHelper dbHelper = new DBHelper(MainActivity.this);
-        InfoContador infoContador = new InfoContador(barrio, direccion, valor);
+        InfoContador infoContador = new InfoContador(barrio, direccion, valor, tipo, tipoId);
 
         long result = dbHelper.addInfoContador(infoContador);
 
         if (result > 0) {
-            Toast.makeText(this, "Saved" + result, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Guardado con éxito", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Failed" + result, Toast.LENGTH_LONG).show();
         }

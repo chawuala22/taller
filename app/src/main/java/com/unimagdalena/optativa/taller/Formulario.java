@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class Formulario extends AppCompatActivity {
 
-    TextView tvTotal;
+
     RecyclerView recyclerView;
     InfoContadorAdapter infoContadorAdapter;
     ArrayList<InfoContador> infoContadores;
@@ -29,12 +29,10 @@ public class Formulario extends AppCompatActivity {
         setContentView(R.layout.activity_formulario);
 
         recyclerView = findViewById(R.id.recyclerView);
-        tvTotal = findViewById(R.id.tvTotal);
 
         DBHelper dbHelper = new DBHelper(this);
 
         infoContadores = dbHelper.getInfoContadores();
-        tvTotal.setText("Total de contadores con informacion" + infoContadores.size());
 
         infoContadorAdapter = new InfoContadorAdapter(infoContadores, this);
         recyclerView.setAdapter(infoContadorAdapter);

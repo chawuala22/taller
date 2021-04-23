@@ -48,14 +48,35 @@
         app:layout_constraintTop_toBottomOf="@+id/direccion"
         android:autofillHints="" />
 
-    <Button
-        android:id="@+id/btnUpdate"
+    <Spinner
+        android:id="@+id/TContadorUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/valor" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#FF6200EE"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TContadorUpdate">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/update"
+            android:textAlignment="center"
+            android:textColor="#FFF" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,19 +8,25 @@ public class InfoContador implements Serializable {
     String barrio;
     String direccion;
     int valor;
+    long idSpTipo;
+    String nameSpTipo;
     long fecha_creacion;
 
-    public InfoContador(int id, String barrio, String direccion, int valor) {
+    public InfoContador(int id, String barrio, String direccion, int valor, String nameSpTipo, long idSpTipo) {
         this.id = id;
         this.barrio = barrio;
         this.direccion = direccion;
         this.valor = valor;
+        this.idSpTipo = idSpTipo;
+        this.nameSpTipo = nameSpTipo;
     }
 
-    public InfoContador(String barrio, String direccion, int valor) {
+    public InfoContador(String barrio, String direccion, int valor, String nameSpTipo, long idSpTipo) {
         this.barrio = barrio;
         this.direccion = direccion;
         this.valor = valor;
+        this.idSpTipo = idSpTipo;
+        this.nameSpTipo = nameSpTipo;
     }
 
     public int getId() {
@@ -61,5 +67,21 @@ public class InfoContador implements Serializable {
 
     public void setFecha_creacion(long fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
+    }
+
+    public long getIdSpTipo() {
+        return idSpTipo;
+    }
+
+    public void setIdSpTipo(int idSpTipo) {
+        this.idSpTipo = idSpTipo;
+    }
+
+    public String getNameSpTipo() {
+        return nameSpTipo;
+    }
+
+    public void setNameSpTipo(String nameSpTipo) {
+        this.nameSpTipo = nameSpTipo;
     }
 }

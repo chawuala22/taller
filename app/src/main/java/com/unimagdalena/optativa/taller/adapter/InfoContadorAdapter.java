@@ -42,9 +42,11 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
     @Override
     public void onBindViewHolder(@NonNull InfoContadorVH holder, int position) {
         final InfoContador infoContador = infoContadores.get(position);
+        holder.tvId.setText(String.valueOf(infoContador.getId()));
         holder.tvBarrio.setText(infoContador.getBarrio());
         holder.tvDireccion.setText(infoContador.getDireccion());
         holder.tvValor.setText(String.valueOf(infoContador.getValor()));
+        holder.tvContador.setText(infoContador.getNameSpTipo());
 
         DateFormat dateF = DateFormat.getDateTimeInstance();
         String data = dateF.format(new Date(infoContador.getFecha_creacion()));
@@ -74,16 +76,18 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
 
     class InfoContadorVH extends RecyclerView.ViewHolder {
 
-        TextView tvBarrio, tvDireccion, tvValor, tvFechaCreacion;
+        TextView tvBarrio, tvDireccion, tvValor, tvFechaCreacion, tvContador, tvId;
         CardView cardUpdate, cardDelete;
 
         public InfoContadorVH(@NonNull View v) {
             super(v);
 
+            tvId = v.findViewById(R.id.tvId);
             tvBarrio = v.findViewById(R.id.tvBarrio);
             tvDireccion = v.findViewById(R.id.tvDireccion);
             tvValor = v.findViewById(R.id.tvValor);
             tvFechaCreacion = v.findViewById(R.id.tvFechaCreacion);
+            tvContador = v.findViewById(R.id.tvContador);
 
             cardUpdate = v.findViewById(R.id.cardUpdate);
             cardDelete = v.findViewById(R.id.cardDelete);
