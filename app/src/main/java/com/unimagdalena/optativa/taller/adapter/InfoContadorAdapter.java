@@ -1,6 +1,7 @@
 package com.unimagdalena.optativa.taller.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unimagdalena.optativa.taller.R;
+import com.unimagdalena.optativa.taller.UpdateInfoContador;
 import com.unimagdalena.optativa.taller.model.InfoContador;
 
 import java.text.DateFormat;
@@ -39,7 +41,7 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
 
     @Override
     public void onBindViewHolder(@NonNull InfoContadorVH holder, int position) {
-        InfoContador infoContador = infoContadores.get(position);
+        final InfoContador infoContador = infoContadores.get(position);
         holder.tvBarrio.setText(infoContador.getBarrio());
         holder.tvDireccion.setText(infoContador.getDireccion());
         holder.tvValor.setText(String.valueOf(infoContador.getValor()));
@@ -51,7 +53,9 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
         holder.cardUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, infoContador.getBarrio() + "Se va actualizar", Toast.LENGTH_LONG);
+                Intent intent =  new Intent(context, UpdateInfoContador.class);
+                intent.putExtra("INFO_CONTADOR", infoContador);
+                context.startActivity(intent);
             }
         });
 

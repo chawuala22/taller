@@ -1,8 +1,9 @@
 package com.unimagdalena.optativa.taller.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class InfoContador {
+public class InfoContador implements Serializable {
     int id;
     String barrio;
     String direccion;

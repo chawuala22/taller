@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner sptipo;
     TextView tvfevha;
     Button btnsave;
+    String tipo = "";
+    long tipoId=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        tipo= parent.getItemAtPosition(position).toString();
+        tipoId = parent.getSelectedItemId();
     }
 
     @Override

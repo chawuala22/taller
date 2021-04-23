@@ -56,6 +56,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.insert("registros_contadores", null, cv);
     }
 
+    public int updateInfoContador(InfoContador infoContador) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put("barrio", infoContador.getBarrio());
+        cv.put("direccion", infoContador.getDireccion());
+        cv.put("valor", infoContador.getValor());
+        cv.put("fecha_creacion", infoContador.getFecha_creacion());
+        return db.update("registros_contadores", cv, "id=?", new String[]{String.valueOf(infoContador.getId())});
+
+    }
+
     public ArrayList<InfoContador> getInfoContadores() {
         ArrayList<InfoContador> infoContadores = new ArrayList<>();
 
@@ -63,16 +75,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT * from registros_contadores", null);
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
                 String barrio = cursor.getString(1);
                 String direccion = cursor.getString(2);
                 int valor = cursor.getInt(3);
-                InfoContador infoContador =  new InfoContador(id,barrio,direccion,valor);
+                InfoContador infoContador = new InfoContador(id, barrio, direccion, valor);
                 infoContador.setFecha_creacion(cursor.getLong(4));
                 infoContadores.add(infoContador);
-            } while ( cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
         return infoContadores;
