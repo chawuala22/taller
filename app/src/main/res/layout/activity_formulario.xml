@@ -9,13 +9,6 @@
     android:background="#CCC"
     tools:context=".Formulario">
 
-    <TextView
-        android:id="@+id/tvTotal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total De Info Contadores"
-        android:layout_marginBottom="16dp"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

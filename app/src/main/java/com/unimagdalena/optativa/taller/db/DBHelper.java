@@ -10,9 +10,7 @@ import android.util.Log;
 
 import com.unimagdalena.optativa.taller.model.InfoContador;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -31,6 +29,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "barrio TEXT," +
                 "direccion TEXT," +
                 "valor INTEGER," +
+                "idSpTipo INTEGER," +
+                "nameSpTipo TEXT," +
                 "fecha_creacion INTEGER)");
 
     }
@@ -48,10 +48,14 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
+        cv.put("fecha_creacion", java.lang.System.currentTimeMillis());
         cv.put("barrio", infoContador.getBarrio());
         cv.put("direccion", infoContador.getDireccion());
+        cv.put("nameSpTipo", infoContador.getNameSpTipo());
+        cv.put("idSpTipo", infoContador.getIdSpTipo());
         cv.put("valor", infoContador.getValor());
-        cv.put("fecha_creacion", new Date().getTime());
+
+
 
         return db.insert("registros_contadores", null, cv);
     }
@@ -63,7 +67,8 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("barrio", infoContador.getBarrio());
         cv.put("direccion", infoContador.getDireccion());
         cv.put("valor", infoContador.getValor());
-        cv.put("fecha_creacion", infoContador.getFecha_creacion());
+        cv.put("idSpTipo", infoContador.getIdSpTipo());
+        cv.put("nameSpTipo", infoContador.getNameSpTipo());
         return db.update("registros_contadores", cv, "id=?", new String[]{String.valueOf(infoContador.getId())});
 
     }
@@ -81,8 +86,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 String barrio = cursor.getString(1);
                 String direccion = cursor.getString(2);
                 int valor = cursor.getInt(3);
-                InfoContador infoContador = new InfoContador(id, barrio, direccion, valor);
-                infoContador.setFecha_creacion(cursor.getLong(4));
+                long idSpTipo = (long) cursor.getInt(4);
+                String nameStTipo = cursor.getString(5);
+
+
+                InfoContador infoContador = new InfoContador(id, barrio, direccion, valor, nameStTipo, idSpTipo);
+                infoContador.setFecha_creacion(cursor.getLong(6));
                 infoContadores.add(infoContador);
             } while (cursor.moveToNext());
         }
