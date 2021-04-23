@@ -10,14 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taller2">
         <activity android:name=".UpdateInfoContador"></activity>
-        <activity android:name=".Formulario" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Formulario" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

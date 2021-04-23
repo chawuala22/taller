@@ -83,5 +83,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         save();
         Intent intent = new Intent(getApplicationContext(), Formulario.class);
         startActivity(intent);
+        finish();
     }
 }

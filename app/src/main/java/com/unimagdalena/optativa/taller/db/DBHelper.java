@@ -98,4 +98,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return infoContadores;
     }
+
+    public int deleteInfoContador(int id) {
+
+        SQLiteDatabase sqLiteDatabase =getWritableDatabase();
+
+       return sqLiteDatabase.delete("registros_contadores","id=?", new String[]{String.valueOf(id)});
+
+    }
 }

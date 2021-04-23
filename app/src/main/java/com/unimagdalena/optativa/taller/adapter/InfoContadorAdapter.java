@@ -1,6 +1,8 @@
 package com.unimagdalena.optativa.taller.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.unimagdalena.optativa.taller.R;
 import com.unimagdalena.optativa.taller.UpdateInfoContador;
+import com.unimagdalena.optativa.taller.db.DBHelper;
 import com.unimagdalena.optativa.taller.model.InfoContador;
 
 import java.text.DateFormat;
@@ -64,7 +67,33 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
         holder.cardDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, infoContador.getBarrio() + "Se va eliminar", Toast.LENGTH_LONG);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                builder.setTitle("Esta a punto de borrar!!!!!");
+                builder.setMessage("¿Esta seguro que quiere borrar?");
+                builder.setIcon(android.R.drawable.ic_menu_delete);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        DBHelper dbHelper = new DBHelper(context);
+                        int result = dbHelper.deleteInfoContador(infoContador.getId());
+
+                        if(result>0){
+                            Toast.makeText(context, "Borrado con éxito", Toast.LENGTH_SHORT).show();
+                            infoContadores.remove(infoContador);
+                            notifyDataSetChanged();
+                        }else{
+                            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                });
+                builder.setNegativeButton("No",null);
+                builder.show();
+
             }
         });
     }
