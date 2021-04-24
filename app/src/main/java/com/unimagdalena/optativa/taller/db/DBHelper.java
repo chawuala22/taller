@@ -106,4 +106,12 @@ public class DBHelper extends SQLiteOpenHelper {
        return sqLiteDatabase.delete("registros_contadores","id=?", new String[]{String.valueOf(id)});
 
     }
+
+    public Cursor searchBarrio(String text){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from "+ DATABASE_NAME+"WHERE barrio Like '%"+text+"%'";
+        Cursor  cursor = db.rawQuery(query,null);
+        return cursor;
+    }
 }

@@ -22,6 +22,7 @@ import com.unimagdalena.optativa.taller.model.InfoContador;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapter.InfoContadorVH> {
 
@@ -101,6 +102,12 @@ public class InfoContadorAdapter extends RecyclerView.Adapter<InfoContadorAdapte
     @Override
     public int getItemCount() {
         return infoContadores.size();
+    }
+
+    public void find(List<InfoContador> contenido) {
+        infoContadores= new ArrayList<>();
+        infoContadores.addAll(contenido);
+        notifyDataSetChanged();
     }
 
     class InfoContadorVH extends RecyclerView.ViewHolder {
