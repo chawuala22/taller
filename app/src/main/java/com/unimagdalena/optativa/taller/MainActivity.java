@@ -18,11 +18,11 @@ import android.widget.Toast;
 import com.unimagdalena.optativa.taller.db.DBHelper;
 import com.unimagdalena.optativa.taller.model.InfoContador;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText edBarrio, edDireccion, edValor;
     Spinner sptipo;
-    CardView btnsave;
+    CardView btnsave, btncancel;
     String tipo = "";
     long tipoId=0;
 
@@ -32,7 +32,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         initalizador();
         spinner();
-        btnsave.setOnClickListener(this);
+        btnsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+                Intent intent = new Intent(getApplicationContext(), Formulario.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Formulario.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initalizador() {
@@ -41,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         edValor = findViewById(R.id.valor);
         sptipo = findViewById(R.id.TContador);
         btnsave = findViewById(R.id.btnsaveinfo);
+        btncancel=findViewById(R.id.btncancel);
 
     }
 
@@ -78,11 +95,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    @Override
-    public void onClick(View v) {
-        save();
-        Intent intent = new Intent(getApplicationContext(), Formulario.class);
-        startActivity(intent);
-        finish();
-    }
 }

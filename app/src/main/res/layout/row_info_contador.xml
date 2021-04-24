@@ -120,13 +120,14 @@
                     android:layout_height="wrap_content"
                     android:textColor="#FFF"
                     android:textAlignment="center"
-                    android:text="Update"
+                    android:text="Actualizar"
                     android:gravity="center_horizontal"
                     android:layout_margin="8dp"/>
             </androidx.cardview.widget.CardView>
             <View
                 android:layout_width="16dp"
                 android:layout_height="10dp"/>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardDelete"
                 android:layout_width="0dp"
@@ -139,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#FFF"
                     android:textAlignment="center"
-                    android:text="Delete"
+                    android:text="Borrar"
                     android:gravity="center_horizontal"
                     android:layout_margin="8dp"/>
             </androidx.cardview.widget.CardView>

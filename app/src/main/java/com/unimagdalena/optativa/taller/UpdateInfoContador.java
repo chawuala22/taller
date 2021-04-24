@@ -21,7 +21,7 @@ public class UpdateInfoContador extends AppCompatActivity implements AdapterView
     Spinner sptipo;
     String tipo = "";
     long tipoId=0;
-    CardView btnUpdate;
+    CardView btnUpdate, btncancel;
     int id;
     long idActual;
 
@@ -36,7 +36,7 @@ public class UpdateInfoContador extends AppCompatActivity implements AdapterView
         edBarrio = findViewById(R.id.barrio);
         edDireccion = findViewById(R.id.direccion);
         edValor = findViewById(R.id.valor);
-
+        btncancel=findViewById(R.id.btncancel);
         btnUpdate = findViewById(R.id.btnUpdate);
         sptipo = findViewById(R.id.TContadorUpdate);
         spinner();
@@ -44,6 +44,14 @@ public class UpdateInfoContador extends AppCompatActivity implements AdapterView
         edDireccion.setText(infoContador.getDireccion());
         edValor.setText(String.valueOf(infoContador.getValor()));
 
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Formulario.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
